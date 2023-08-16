@@ -93,3 +93,13 @@ for (i in seq_along(height)) {
 }
 ```
 
+## For loop with conditional statement
+
+```{r}
+
+```
+
+
+
+
+
