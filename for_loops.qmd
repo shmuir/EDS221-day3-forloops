@@ -17,7 +17,8 @@ if (temp > 97) {
 ```
 
 #### Create an if else statement for blue whale lengths
--    giant if lengths is greater than 35, medium if between 20 and 35, small if less or equal to than 20
+
+-   giant if lengths is greater than 35, medium if between 20 and 35, small if less or equal to than 20
 
 ```{r}
 blue_whale <- 16 
@@ -64,7 +65,7 @@ for (i in seq_along(height)) {
 }
 ```
 
-##### for each value in the height vector, return sum of the value plus the one right after it
+-   for each value in the height vector, return sum of the value plus the one right after it
 
 ```{r}
 for (i in seq_along(height)) {
@@ -73,7 +74,7 @@ for (i in seq_along(height)) {
 }
 ```
 
-or to not have that final NA value 
+or to not have that final NA value
 
 ```{r}
 for (i in seq_along(1:(length(height) - 1))) {
@@ -95,11 +96,74 @@ for (i in seq_along(height)) {
 
 ## For loop with conditional statement
 
-```{r}
+-   Write a for loop with a conditional (if) statement that returns the means of all numeric variables in the penguins data set.
 
+```{r}
+library(palmerpenguins)
+tibble::as_tibble(penguins)
 ```
 
+```{r}
+for (i in seq(penguins)) {
+  if (is.numeric(penguins[[i]])) {
+  mean <- mean(penguins[[i]], na.rm = TRUE) 
+  print(mean)
+}
+}
+```
+
+## Functional programming for easier iteration
+
+#### apply()
+
+Use apply to iterate over rows or columns - margin = 1 is rows, margin = 2 is columns
+
+```{r}
+apply(mtcars, 2, median)
+```
+
+#### dplyr::across()
+
+Use across to calculate mean flipper length of penguins by species
+
+```{r}
+library(tidyverse)
+```
+
+##### great way to get summary stats!
+
+```{r}
+penguins %>%
+  group_by(species, island) %>%
+  summarise(mean_flipper_length = mean(flipper_length_mm, na.rm = TRUE),
+            sd_flipper_length = sd(flipper_length_mm, na.rm = TRUE),
+            max_body_mass = max(body_mass_g, na.rm = TRUE))
+```
+
+-    this is a way to manually code it
+
+But we can also use across in summarise
+
+```{r}
+penguins %>%
+  group_by(species, island) %>% 
+  summarize(across(where(is.numeric), mean, na.rm = TRUE))
+```
+
+## Detecting a string pattern
+
+```{r}
+food <- "I love burritos"
+
+#str_detect(food, burritos)
 
 
+if (str_detect(food, "burritos")) {
+  print("yay burritos")
+} else {
+  print("What about burritos?")
+}
+
+```
 
 
