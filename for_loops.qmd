@@ -53,4 +53,43 @@ if (housing_type == "whole") {
 }
 ```
 
+## For loops
+
+```{r}
+height <- c(58, 61, 65, 72, 89, 94)
+
+for (i in seq_along(height)) {
+  half_height = height[i] / 2
+  print(half_height)
+}
+```
+
+##### for each value in the height vector, return sum of the value plus the one right after it
+
+```{r}
+for (i in seq_along(height)) {
+  sum_next = height[i] + height[i+1]
+  print(sum_next)
+}
+```
+
+or to not have that final NA value 
+
+```{r}
+for (i in seq_along(1:(length(height) - 1))) {
+  sum_next = height[i] + height[i+1]
+  print(sum_next)
+}
+```
+
+## Challenge Problem
+
+-   Write a for loop that calculates the value of height for each element divided by the mean of the entire height vector
+
+```{r}
+for (i in seq_along(height)) {
+  div_mean = height[i] / mean(height)
+  print(div_mean)
+}
+```
 
