@@ -1,0 +1,32 @@
+---
+title: "For loops ans Conditional Statements"
+date: "16 August 2023"
+format: html
+editor: visual
+---
+
+## Conditional Statements
+
+```{r}
+temp <- 95
+
+if (temp > 97) {
+  print("Temperature Warning")
+} else 
+  print("It's nice out")
+```
+
+#### Create an if else statement for blue whale lengths
+-    giant if lengths is greater than 35, medium if between 20 and 35, small if less or equal to than 20
+
+```{r}
+blue_whale <- 16 
+
+if (blue_whale > 35) { 
+  print("GIANT") 
+} else if (blue_whale >= 20 & blue_whale <= 35) {
+    print("MEDIUM")
+}   else if (blue_whale < 20) {print("SMALL")
+  }
+```
+
